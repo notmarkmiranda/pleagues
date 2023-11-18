@@ -27,5 +27,6 @@ group :development do
 end
 
 group :test do
+  gem "letter_opener"
   gem "shoulda-matchers"
 end
