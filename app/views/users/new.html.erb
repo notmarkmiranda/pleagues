@@ -1,0 +1,17 @@
+<main class="form-sign-in text-center">
+  <h1 class="h3 mb-3 fw-normal">Sign in / Sign up</h2>
+
+  <%= form_with model: @user, url: sign_in_path do |f| %>
+    <div class="form-floating">
+      <%= f.text_field :email, class: "form-control", placeholder: "email address" %>
+      <%= f.label :email, "email address", class: "form-label" %>
+    </div>
+
+    <div class="form-floating mb-3">
+      <%= f.password_field :password, class: "form-control", placeholder: "password" %>
+      <%= f.label :password, class: "form-label" %>
+    </div>
+
+    <%= f.submit "Sign In or Up", class: "w-100 btn btn-lg btn-outline-primary" %>
+  <% end %>
+</main>

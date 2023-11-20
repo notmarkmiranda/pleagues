@@ -27,6 +27,14 @@ group :development do
 end
 
 group :test do
+  gem "capybara"
   gem "letter_opener"
+  gem "selenium-webdriver"
   gem "shoulda-matchers"
 end
+
+gem "dockerfile-rails", ">= 1.5", :group => :development
+
+gem "sentry-ruby", "~> 5.13"
+
+gem "sentry-rails", "~> 5.13"
