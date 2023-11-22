@@ -1,0 +1,17 @@
+<main class="form-league-new text-center mt-4">
+  <h1 class="h3 mb-3 fw-normal">New League</h2>
+
+  <%= form_with model: @league do |f| %>
+    <div class="form-floating">
+      <%= f.text_field :name, class: "form-control league-name", placeholder: "League Name" %>
+      <%= f.label :name, "League Name", class: "form-label" %>
+    </div>
+
+    <div class="form-floating mb-3">
+      <%= f.text_field :location, class: "form-control league-location", placeholder: "location" %>
+      <%= f.label :location, class: "form-label" %>
+    </div>
+
+    <%= f.submit "Create League", class: "w-100 btn btn-lg btn-outline-primary" %>
+  <% end %>
+</main>
