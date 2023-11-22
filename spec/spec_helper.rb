@@ -90,3 +90,7 @@ RSpec.configure do |config|
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
 end
+
+def login(user = nil)
+  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user || create(:user))
+end
