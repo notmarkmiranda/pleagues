@@ -14,7 +14,6 @@ RSpec.describe "User can log in", type: :feature do
       expect(page).to have_content("Dashboard")
     end
 
-
     it "allows a new user to log in" do
       visit "/sign-in"
 

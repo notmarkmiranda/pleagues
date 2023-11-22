@@ -7,7 +7,7 @@ RSpec.describe "User creation", type: :request do
 
   it "creates a user when one does not exist with that email" do
     expect do
-      post "/sign-in", params: { user: user_attrs }
+      post "/sign-in", params: {user: user_attrs}
     end.to change(User, :count).by(1)
   end
 
@@ -15,7 +15,7 @@ RSpec.describe "User creation", type: :request do
     create(:user, email: user_attrs[:email])
 
     expect do
-      post "/sign-in", params: { user: user_attrs }
+      post "/sign-in", params: {user: user_attrs}
     end.to change(User, :count).by(0)
   end
 end

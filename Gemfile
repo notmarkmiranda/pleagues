@@ -34,7 +34,7 @@ group :test do
   gem "shoulda-matchers"
 end
 
-gem "dockerfile-rails", ">= 1.5", :group => :development
+gem "dockerfile-rails", ">= 1.5", group: :development
 
 gem "sentry-ruby", "~> 5.13"
 

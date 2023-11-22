@@ -6,8 +6,8 @@ require_relative "../config/environment"
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require "rspec/rails"
 # Add additional requires below this line. Rails is not loaded until this point!
-require 'capybara/rails'
-require 'selenium-webdriver'
+require "capybara/rails"
+require "selenium-webdriver"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -75,20 +75,20 @@ RSpec.configure do |config|
   end
 
   config.before(:each, type: :system, js: true) do
-    if ENV['SELENIUM_DRIVER_URL'].present?
+    if ENV["SELENIUM_DRIVER_URL"].present?
       driven_by :selenium, using: :chrome,
-                           options: {
-                             browser: :remote,
-                             url: ENV.fetch('SELENIUM_DRIVER_URL')
-                           }
+        options: {
+          browser: :remote,
+          url: ENV.fetch("SELENIUM_DRIVER_URL")
+        }
       Capybara.run_server = false
-      Capybara.app_host = ENV.fetch('CAPYBARA_APP_HOST')
+      Capybara.app_host = ENV.fetch("CAPYBARA_APP_HOST")
       Capybara.ignore_hidden_elements = false
       Capybara.javascript_driver = :selenium
     else
       Capybara.register_driver :headless_chrome do |app|
         options = Selenium::WebDriver::Chrome::Options.new
-        options.add_option('w3c', false)
+        options.add_option("w3c", false)
         %w[headless window-size=1280x1280 disable-gpu].each { |arg| options.add_argument(arg) }
         Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
       end
@@ -104,10 +104,9 @@ RSpec.configure do |config|
     # 2) The first feature test will trigger rack-timeout
     #
     # Precompile the assets to prevent these issues.
-    visit '/assets/application.css'
-    visit '/assets/application.js'
+    visit "/assets/application.css"
+    visit "/assets/application.js"
   end
-
 end
 
 # Adds shoulda matchers
