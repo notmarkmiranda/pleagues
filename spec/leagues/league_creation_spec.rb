@@ -13,7 +13,7 @@ RSpec.describe "League creation", type: :request do
   end
 
   it "calls the membership_service" do
-    expect(MembershipService).to receive(:call).with({league_id: Integer, user_id: Integer, role: :super_admin}).once
+    expect(MembershipService).to receive(:call).with({league_id: Integer, user_id: Integer, role: :superadmin}).once
 
     post "/leagues", params: {league: league_attrs}
   end
