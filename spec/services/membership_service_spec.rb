@@ -15,4 +15,7 @@ RSpec.describe MembershipService do
       )
     end.to change(Membership, :count).by(1)
   end
+
+  # TODO => This spec needs validation on the model as well
+  it "does not create a membership when one exists & fails silently"
 end
