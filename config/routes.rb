@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # League
+  resources :leagues, only: [:show]
+
+  # User Sessions
   get "/sign-in", to: "users#new", as: "sign_in"
   post "/sign-in", to: "users#create"
   get "/dashboard", to: "users#show", as: "dashboard"
