@@ -5,17 +5,21 @@ require "rails_helper"
 RSpec.describe MembershipService do
   let(:user) { create(:user) }
   let(:league) { create(:league) }
-
-  it "creates a membership" do
-    expect do
-      described_class.call(
-        league_id: league.id,
-        user_id: user.id,
-        role: :superadmin
-      )
-    end.to change(Membership, :count).by(1)
+  subject do
+    described_class.call(
+      league_id: league.id,
+      user_id: user.id,
+      role: :superadmin
+    )
   end
 
-  # TODO => This spec needs validation on the model as well
-  it "does not create a membership when one exists & fails silently"
+  it "creates a membership" do
+    expect { subject }.to change(Membership, :count).by(1)
+  end
+
+  it "does not create a membership when one exists & fails silently" do
+    create(:membership, league: league, user: user)
+
+    expect { subject }.to change(Membership, :count).by(0)
+  end
 end
