@@ -2,6 +2,6 @@
 
 class LeaguesController < ApplicationController
   def show
-    @league = League.find(params[:id])
+    @league = League.find_by(uuid: params[:uuid])
   end
 end

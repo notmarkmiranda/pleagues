@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # League
-  resources :leagues, only: [:show]
+  resources :leagues, only: [:show], param: :uuid
 
   # User Sessions
   get "/sign-in", to: "users#new", as: "sign_in"
