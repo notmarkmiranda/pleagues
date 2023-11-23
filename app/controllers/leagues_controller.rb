@@ -14,9 +14,9 @@ class LeaguesController < ApplicationController
   def create
     @league = League.new(league_params)
     if @league.save
-      MembershipService.call(league_id: @league.id, user_id: current_user.id, role: :superadmin)
+      MembershipService.call(league_id: @league.id, user_id: current_user.id, role: :superadmin, status: :active)
       flash[:notice] = "League created!"
-      redirect_to @league
+      redirect_to league_path(@league.uuid)
     else
       flash[:alert] = @league.errors.full_messages
       render :new

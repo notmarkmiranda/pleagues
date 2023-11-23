@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   before_action :redirect_user, only: [:new, :create]
   before_action :require_user, only: [:show]
 
+  def show
+    @leagues = current_user.leagues
+  end
+
   def new
     @user = User.new
   end
