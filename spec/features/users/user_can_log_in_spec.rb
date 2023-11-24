@@ -11,7 +11,7 @@ RSpec.describe "User can log in", type: :feature do
       fill_in :password, with: "password"
       click_button "Sign In or Up"
 
-      expect(page).to have_content("Dashboard")
+      expect(page).to have_content("dashboard")
     end
 
     it "allows a new user to log in" do
@@ -21,7 +21,7 @@ RSpec.describe "User can log in", type: :feature do
       fill_in :password, with: "password"
       click_button "Sign In or Up"
 
-      expect(page).to have_content("Dashboard")
+      expect(page).to have_content("dashboard")
     end
   end
 
@@ -35,7 +35,7 @@ RSpec.describe "User can log in", type: :feature do
       fill_in :password, with: "password"
       click_button "Sign In or Up"
 
-      expect(page).to have_content("Dashboard")
+      expect(page).to have_content("dashboard")
     end
   end
 end
