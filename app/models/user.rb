@@ -8,4 +8,8 @@ class User < ApplicationRecord
   def role_in_league(league)
     memberships.find_by(league_id: league).role
   end
+
+  def set_random_password
+    self.password = SecureRandom.hex
+  end
 end

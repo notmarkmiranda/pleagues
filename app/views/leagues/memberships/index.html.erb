@@ -1,0 +1,28 @@
+<div class="mt-4">
+  <div class="action-buttons">
+    <%= link_to "< back to league", league_path(@league.uuid), class: "btn btn-sm btn-outline-secondary" %>
+    <%= link_to "invite new member", new_membership_league_path(@league.uuid), class: "btn btn-sm btn-outline-secondary" %>
+  </div>
+  <h3>Members</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>email</th>
+        <th>role</th>
+        <th>status</th>
+        <th>actions</th>
+      </tr>
+      <tbody>
+        <% @memberships.each do |membership| %>
+          <tr>
+            <td><%= membership.user_email %></td>
+            <td><%= membership.role %></td>
+            <td><%= membership.status %></td>
+            <td></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </thead>
+  </table>
+</div>

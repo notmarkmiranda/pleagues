@@ -1,1 +1,5 @@
-<h2><%= @league.name %></h2>
+<div class="mt-4">
+  <h2><%= @league.name %></h2>
+  <%= link_to "memberships", memberships_league_path(@league.uuid), class: "btn btn-sm btn-outline-secondary" %>
+  <%= link_to "invite new member", new_membership_league_path(@league.uuid), class: "btn btn-sm btn-outline-secondary" %>
+</div>

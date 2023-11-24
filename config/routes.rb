@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   # League
-  resources :leagues, only: [:show, :new, :create], param: :uuid
+  resources :leagues, only: [:show, :new, :create], param: :uuid do
+    member do
+      get "/memberships", to: "leagues/memberships#index", as: "memberships"
+      get "/memberships/new", to: "leagues/memberships#new", as: "new_membership"
+      post "/memberships", to: "leagues/memberships#create", as: "membership"
+    end
+  end
 
   # User Sessions
   get "/sign-in", to: "users#new", as: "sign_in"

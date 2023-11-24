@@ -1,0 +1,33 @@
+<main class="col-md-4 offset-md-4 mt-4">
+  <%= link_to "< back to league", league_path(@league.uuid), class: "btn btn-sm btn-outline-secondary" %>
+  <h1 class="h3 mt-4 mb-3 fw-normal text-center">invite someone to <%= @league.name %></h1>
+
+  <%= form_with model: [@league, @membership], url: membership_league_path do |f| %>
+    <%= f.fields_for :user do |ff| %>
+      <div class="mb-2">
+        <%= ff.label :email, "email", class: "form-label" %>
+        <%= ff.text_field :email, class: "form-control" %>
+      </div>
+      <div class="mb-2">
+        <%= ff.label :first_name, "first name", class: "form-label" %>
+        <%= ff.text_field :first_name, class: "form-control" %>
+      </div>
+      <div class="mb-2">
+        <%= ff.label :last_name, "last name", class: "form-label" %>
+        <%= ff.text_field :last_name, class: "form-control" %>
+      </div>
+      <div class="mb-2">
+        <%= ff.label :nickname, "nickname", class: "form-label" %>
+        <%= ff.text_field :nickname, class: "form-control" %>
+      </div>
+    <% end %>
+
+    <div>
+      <%= f.label :role, "role", class: "form-label" %>
+      <%= f.select :role, Membership.available_roles, {}, class: "form-select" %>
+    </div>
+    <div class="mt-4">
+      <%= f.submit "invite", class: "btn btn-sm btn-outline-primary w-100" %>
+    </div>
+  <% end %>
+</main>
