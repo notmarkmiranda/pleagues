@@ -32,7 +32,9 @@ class UsersController < ApplicationController
   def log_user_in
     session[:user_id] = @user.id
     flash[:notice] = "Welcome!"
-    redirect_to dashboard_path
+    redirect_path = (session[:redirect_back] || dashboard_path)
+    clear_redirect
+    redirect_to redirect_path
   end
 
   def redirect_to_sign_in

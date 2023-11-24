@@ -8,10 +8,17 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    redirect_to sign_in_path unless current_user
+    unless current_user
+      session[:redirect_back] = request.path
+      redirect_to sign_in_path
+    end
   end
 
   def redirect_user
     redirect_to dashboard_path if current_user
+  end
+
+  def clear_redirect
+    session[:redirect_back] = nil
   end
 end

@@ -11,7 +11,7 @@
         </li>
         <% unless current_user %>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <%= link_to "Sign in/up", sign_in_path , class:"nav-link" %>
           </li>
         <% end %>
         <li class="nav-item dropdown">
@@ -20,12 +20,11 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
             <% if current_user %>
+              <li><%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %></li>
+              <li><hr class="dropdown-divider"></li>
               <li><%= button_to "Sign Out", sign_out_path, method: :delete, class: "dropdown-item" %></li>
             <% end %>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
       </ul>
