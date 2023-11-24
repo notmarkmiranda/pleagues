@@ -6,6 +6,6 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: {case_sensitive: false}
 
   def role_in_league(league)
-    memberships.find_by(league_id: league).role.capitalize
+    memberships.find_by(league_id: league).role
   end
 end
