@@ -19,6 +19,7 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 group :development, :test do
   gem "factory_bot_rails"
   gem "faker"
+  gem "letter_opener"
   gem "pry"
   gem "rspec-rails"
   gem "standard-rails"
@@ -30,7 +31,6 @@ end
 
 group :test do
   gem "capybara"
-  gem "letter_opener"
   gem "selenium-webdriver"
   gem "shoulda-matchers"
 end

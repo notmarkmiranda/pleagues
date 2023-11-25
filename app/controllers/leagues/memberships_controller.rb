@@ -18,6 +18,7 @@ module Leagues
       @membership = @league.memberships.new(membership_attributes)
       @membership.user = user
       if @membership.save
+        MembershipMailer.with(user: user, league: @league).invite_to_league.deliver_later
         flash[:notice] = "invited"
       else
         flash[:alert] = "something went wrong"
