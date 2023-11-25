@@ -6,6 +6,7 @@ gem "rails", "~> 7.1.2"
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", require: false
 gem "cssbundling-rails"
+gem "draper"
 gem "jbuilder"
 gem "jsbundling-rails"
 gem "pg", "~> 1.1"
