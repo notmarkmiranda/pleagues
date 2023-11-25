@@ -5,24 +5,28 @@
   </div>
   <hr />
   <h3>your leagues</h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">name</th>
-        <th scope="col">location</th>
-        <th scope="col">league owner</th>
-        <th scope="col">role</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @leagues.each do |league| %>
+  <% if @leagues.any? %>
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= link_to league.name, league_path(league.uuid) %></td>
-          <td><%= league.location %></td>
-          <td><%= league.owner_name %></td>
-          <td><%= current_user.role_in_league(league) %></td>
+          <th scope="col">name</th>
+          <th scope="col">location</th>
+          <th scope="col">league owner</th>
+          <th scope="col">role</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @leagues.each do |league| %>
+          <tr>
+            <td><%= link_to league.name, league_path(league.uuid) %></td>
+            <td><%= league.location %></td>
+            <td><%= league.owner_name %></td>
+            <td><%= current_user.role_in_league(league) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>you have no leagues, please create one or ask someone to invite you</p>
+  <% end %>
 </div>

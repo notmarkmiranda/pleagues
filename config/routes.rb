@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # memberships
+  resources :memberships, only: [:show]
+
   # user & sessions
   get "/sign-in", to: "users#new", as: "sign_in"
   post "/sign-in", to: "users#create"

@@ -6,6 +6,7 @@ class Membership < ApplicationRecord
   enum status: {pending: 0, active: 1, archived: 2}
 
   delegate :email, to: :user, prefix: true
+  delegate :name, to: :league, prefix: true
 
   validates :user_id, uniqueness: {scope: :league_id}
 
