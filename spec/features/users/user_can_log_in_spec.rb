@@ -9,7 +9,7 @@ RSpec.describe "User can log in", type: :feature do
 
       fill_in :email, with: user.email
       fill_in :password, with: "password"
-      click_button "Sign In or Up"
+      click_button "sign in or up"
 
       expect(page).to have_content("dashboard")
     end
@@ -19,7 +19,7 @@ RSpec.describe "User can log in", type: :feature do
 
       fill_in :email, with: "new@email.com"
       fill_in :password, with: "password"
-      click_button "Sign In or Up"
+      click_button "sign in or up"
 
       expect(page).to have_content("dashboard")
     end
@@ -33,7 +33,7 @@ RSpec.describe "User can log in", type: :feature do
 
       fill_in :email, with: user.email
       fill_in :password, with: "password"
-      click_button "Sign In or Up"
+      click_button "sign in or up"
 
       expect(page).to have_content("dashboard")
     end

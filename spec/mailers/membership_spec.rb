@@ -7,7 +7,7 @@ RSpec.describe MembershipMailer, type: :mailer do
     let(:mail) { MembershipMailer.with(user: user, league: league).invite_to_league }
 
     it "renders the headers" do
-      expect(mail.subject).to eq("You've been invited!")
+      expect(mail.subject).to eq("you've been invited!")
       expect(mail.to).to eq([user.email])
       expect(mail.from).to eq(["invite-no-reply@pokerleague.app"])
     end
@@ -16,5 +16,4 @@ RSpec.describe MembershipMailer, type: :mailer do
       expect(mail.body.encoded).to include("oh hey, friend! you've been invited to join #{league.name}")
     end
   end
-
 end

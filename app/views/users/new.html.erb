@@ -7,11 +7,14 @@
       <%= f.label :email, "email address", class: "form-label" %>
     </div>
 
-    <div class="form-floating mb-3">
+    <div class="form-floating">
       <%= f.password_field :password, class: "form-control", placeholder: "password" %>
       <%= f.label :password, class: "form-label" %>
     </div>
+    <div class="text-start mb-3">
+      <%= link_to "forgot your password?", forgot_password_path %>
+    </div>
 
-    <%= f.submit "Sign In or Up", class: "w-100 btn btn-lg btn-outline-primary" %>
+    <%= f.submit "sign in or up", class: "w-100 btn btn-lg btn-outline-primary" %>
   <% end %>
 </main>

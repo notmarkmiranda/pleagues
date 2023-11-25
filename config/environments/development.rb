@@ -77,4 +77,8 @@ Rails.application.configure do
   # letter opener configuration
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = {
+    :host => '127.0.0.1',
+    :port => 3000
+  }
 end

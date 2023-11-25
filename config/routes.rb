@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # League
+  # league
   resources :leagues, only: [:show, :new, :create], param: :uuid do
     member do
       get "/memberships", to: "leagues/memberships#index", as: "memberships"
@@ -8,11 +8,17 @@ Rails.application.routes.draw do
     end
   end
 
-  # User Sessions
+  # user & sessions
   get "/sign-in", to: "users#new", as: "sign_in"
   post "/sign-in", to: "users#create"
   get "/dashboard", to: "users#show", as: "dashboard"
   delete "/sign-out", to: "sessions#destroy", as: "sign_out"
+
+  # forgot password
+  get "/forgot-password", to: "sessions#forgot_password", as: "forgot_password"
+  post "/generate-token", to: "sessions#generate_token", as: "generate_token"
+  get "/forgot-password/:token", to: "sessions#forgot_password_token", as: "forgot_password_token"
+  post "/forgot-password", to: "sessions#reset_password", as: "reset_password"
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

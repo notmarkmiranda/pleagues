@@ -10,6 +10,6 @@ class MembershipMailer < ApplicationMailer
     @league = params[:league]
     @url = "https://example.com/test"
 
-    mail(to: @user.email, subject: "You've been invited!")
+    mail(to: @user.email, subject: "you've been invited!")
   end
 end
