@@ -60,7 +60,7 @@ module Leagues
     end
 
     def invite_url
-      @new_record ? forgot_password_url(redirect: membership_path(@membership)) : membership_url(@membership)
+      @new_record ? forgot_password_url(redirect_back: membership_path(@membership)) : membership_url(@membership)
     end
   end
 end

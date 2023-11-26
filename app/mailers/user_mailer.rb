@@ -7,7 +7,7 @@ class UserMailer < ApplicationMailer
   #
   def forgot_password
     user = params[:user]
-    @reset_url = forgot_password_token_url(params[:sgid])
+    @reset_url = forgot_password_token_url(params[:sgid], redirect_back: params[:redirect_back])
 
     mail to: user.email, subject: "reset password link"
   end

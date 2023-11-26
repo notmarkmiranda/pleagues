@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
   def generate_token
     user = User.find_by(email: params[:email])
     if user
-      UserMailer.with(user: user, sgid: token(user)).forgot_password.deliver_now
+      UserMailer.with(user: user, sgid: token(user), redirect_back: params[:redirect_back]).forgot_password.deliver_now
     end
     flash[:alert] = "password reset instructions will be sent to this email if it exists in our system"
     redirect_to forgot_password_path
@@ -20,7 +20,8 @@ class SessionsController < ApplicationController
     user = GlobalID::Locator.locate_signed(params[:user_token], for: 'reset_password')
     if user&.update(user_params)
       flash[:notice] = "password updated"
-      redirect_to sign_in_path
+      session[:redirect_back] = params[:redirect_back]
+      redirect_to sign_in_path(redirect_back: params[:redirect_back])
     else
       flash[:alert] = "something went wrong"
       redirect_to forgot_password_path

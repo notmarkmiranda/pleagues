@@ -4,7 +4,7 @@ RSpec.describe MembershipMailer, type: :mailer do
   describe "invite_to_league" do
     let(:user) { create(:user) }
     let(:league) { create(:league) }
-    let(:mail) { MembershipMailer.with(user: user, league: league).invite_to_league }
+    let(:mail) { MembershipMailer.with(user: user, league: league, url: "https://www.example.com").invite_to_league }
 
     it "renders the headers" do
       expect(mail.subject).to eq("you've been invited!")
