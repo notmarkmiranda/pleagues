@@ -12,6 +12,7 @@
           <th scope="col">name</th>
           <th scope="col">location</th>
           <th scope="col">league owner</th>
+          <th scope="col">membership status</th>
           <th scope="col">role</th>
         </tr>
       </thead>
@@ -21,6 +22,7 @@
             <td><%= link_to league.name, league_path(league.uuid) %></td>
             <td><%= league.location %></td>
             <td><%= league.owner_name %></td>
+            <td><%= current_user.membership_status(league) %></td>
             <td><%= current_user.role_in_league(league) %></td>
           </tr>
         <% end %>

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # memberships
   resources :memberships, only: [:show] do
     put :accept, on: :member
+    put :reject, on: :member
   end
 
   # user & sessions

@@ -15,4 +15,10 @@ class MembershipsController < ApplicationController
     redirect_to @membership
   end
 
+  def reject
+    @membership = Membership.find(params[:id])
+    authorize @membership
+    @membership.archived!
+    redirect_to @membership
+  end
 end
