@@ -18,8 +18,7 @@ module Leagues
       @membership = @league.memberships.new(membership_attributes)
       @membership.user = user
       if @membership.save
-        # url = @new_user? ? "reset_password_url" : "league_show_url?"
-        MembershipMailer.with(user: user, league: @league).invite_to_league.deliver_later
+        MembershipMailer.with(user: user, league: @league, url: invite_url).invite_to_league.deliver_later
         flash[:notice] = "invited"
       else
         flash[:alert] = "something went wrong"
@@ -52,11 +51,16 @@ module Leagues
 
     def find_or_create_user
       user = User.find_or_initialize_by(email: user_attributes[:email])
-      if user.new_record?
+      @new_record = user.new_record?
+      if @new_record
         user.assign_attributes(user_attributes)
         user.set_random_password
       end
       user
+    end
+
+    def invite_url
+      @new_record ? forgot_password_url(redirect: membership_path(@membership)) : membership_url(@membership)
     end
   end
 end

@@ -3,6 +3,6 @@
 class MembershipsController < ApplicationController
   def show
     @membership = Membership.includes(:user, :league).find(params[:id]).decorate
-    # authorize @membership
+    authorize @membership
   end
 end

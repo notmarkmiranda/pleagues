@@ -3,6 +3,10 @@
 class SessionsController < ApplicationController
   before_action :redirect_user, except: [:destroy]
 
+  def forgot_password
+    # session[:redirect_back] = params[:redirect]
+  end
+
   def generate_token
     user = User.find_by(email: params[:email])
     if user
