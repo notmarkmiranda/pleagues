@@ -3,6 +3,10 @@ class MembershipPolicy < ApplicationPolicy
     record.user.id == user.id
   end
 
+  def accept?
+    record.user.id == user.id
+  end
+
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     # def resolve
