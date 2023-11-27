@@ -2,8 +2,7 @@
   <h2>membership details</h2>
   <li>email: <%= @membership.user_email %></li>
   <li>league: <%= @membership.league_name %></li>
-  <% unless @membership.pending? %>
-
+  <% if @membership.active? %>
     <li><%= @membership.role %> for <%= time_ago_in_words(@membership.accepted_at) %></li>
   <% end %>
   <li>status: <%= @membership.status %></li>
@@ -13,8 +12,8 @@
 
   <% if @membership.pending? %>
     <div class="membership-actions mt-3 mb-3 d-inline-flex gap-2">
-      <%= button_to "accept", "#", class: "btn btn-sm btn-outline-primary" %>
-      <%= button_to "reject", "#", class: "btn btn-sm btn-outline-danger" %>
+      <%= button_to "accept", accept_membership_path(@membership), method: :put, class: "btn btn-sm btn-outline-primary" %>
+      <%= button_to "reject", reject_membership_path(@membership), method: :put, class: "btn btn-sm btn-outline-danger" %>
     </div>
   <% end %>
 </div>

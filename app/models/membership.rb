@@ -13,4 +13,12 @@ class Membership < ApplicationRecord
   def self.available_roles
     roles.except(:superadmin).keys
   end
+
+  def activate!
+    self.active! && update(accepted_at: DateTime.current)
+  end
+
+  def archive!
+    self.archived! && update(accepted_at: nil)
+  end
 end

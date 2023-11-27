@@ -11,14 +11,14 @@ class MembershipsController < ApplicationController
   def accept
     @membership = Membership.find(params[:id])
     authorize @membership
-    @membership.active!
+    @membership.activate!
     redirect_to @membership
   end
 
   def reject
     @membership = Membership.find(params[:id])
     authorize @membership
-    @membership.archived!
+    @membership.archive!
     redirect_to @membership
   end
 end
