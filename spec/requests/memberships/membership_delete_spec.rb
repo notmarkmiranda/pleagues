@@ -15,12 +15,12 @@ RSpec.describe "Membership.delete", type: :request do
       end.to change(Membership, :count).by(-1)
     end
 
-    it "archived - deletes a membership" do
+    it "archived - does not delete a membership" do
       membership.archived!
 
       expect do
         delete "/memberships/#{membership.id}"
-      end.to change(Membership, :count).by(-1)
+      end.to change(Membership, :count).by(0)
     end
   end
 

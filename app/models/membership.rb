@@ -23,6 +23,6 @@ class Membership < ApplicationRecord
   end
 
   def destroyable?
-    !active?
+    pending?
   end
 end
