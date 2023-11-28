@@ -8,6 +8,14 @@ class MembershipsController < ApplicationController
     authorize @membership
   end
 
+  def destroy
+    @membership = Membership.includes(:league).find(params[:id])
+    authorize @membership
+    @membership.destroyable? ? @membership.destroy : @membership.archived!
+    redirect_to memberships_league_path(@membership.league.uuid)
+  end
+
+  # Non-restful routes
   def accept
     @membership = Membership.find(params[:id])
     authorize @membership

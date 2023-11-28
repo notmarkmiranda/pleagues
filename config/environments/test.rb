@@ -7,9 +7,9 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   config.after_initialize do
-    Bullet.enable        = true
+    Bullet.enable = true
     Bullet.bullet_logger = true
-    Bullet.raise         = true # raise an error if n+1 query occurs
+    Bullet.raise = true # raise an error if n+1 query occurs
   end
 
   # Settings specified here will take precedence over those in config/application.rb.
@@ -70,7 +70,7 @@ Rails.application.configure do
 
   # Mailer spec
   config.action_mailer.default_url_options = {
-    :host => '127.0.0.1',
-    :port => 3000
+    host: "127.0.0.1",
+    port: 3000
   }
 end

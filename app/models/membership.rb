@@ -15,10 +15,14 @@ class Membership < ApplicationRecord
   end
 
   def activate!
-    self.active! && update(accepted_at: DateTime.current)
+    active! && update(accepted_at: DateTime.current)
   end
 
   def archive!
-    self.archived! && update(accepted_at: nil)
+    archived! && update(accepted_at: nil)
+  end
+
+  def destroyable?
+    !active?
   end
 end

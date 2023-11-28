@@ -4,14 +4,17 @@ require "rails_helper"
 
 RSpec.describe "Membership update", type: :request do
   let(:membership) { create(:membership, status: :pending) }
-  
+
   before { login(membership.user) }
 
   context "#accept" do
     it "updates a membership from pending to accepted" do
       expect do
         put "/memberships/#{membership.id}/accept"
-      end.to change { membership.reload; membership.status }
+      end.to change {
+               membership.reload
+               membership.status
+             }
     end
 
     it "doesn't update a membership when it is already active" do
@@ -19,7 +22,10 @@ RSpec.describe "Membership update", type: :request do
 
       expect do
         put "/memberships/#{membership.id}/accept"
-      end.not_to change { membership.reload; membership.status }
+      end.not_to change {
+                   membership.reload
+                   membership.status
+                 }
     end
   end
 
@@ -27,7 +33,10 @@ RSpec.describe "Membership update", type: :request do
     it "updates a membership from pending to accepted" do
       expect do
         put "/memberships/#{membership.id}/reject"
-      end.to change { membership.reload; membership.status }
+      end.to change {
+               membership.reload
+               membership.status
+             }
     end
 
     it "doesn't update a membership when it is already active" do
@@ -35,7 +44,10 @@ RSpec.describe "Membership update", type: :request do
 
       expect do
         put "/memberships/#{membership.id}/reject"
-      end.not_to change { membership.reload; membership.status }
+      end.not_to change {
+                   membership.reload
+                   membership.status
+                 }
     end
   end
 end

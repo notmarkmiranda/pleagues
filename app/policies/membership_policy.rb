@@ -3,6 +3,11 @@ class MembershipPolicy < ApplicationPolicy
     record.user.id == user.id
   end
 
+  def destroy?
+    role = user.role_in_league(record.league)
+    role == "admin" || role == "superadmin"
+  end
+
   def accept?
     record.user.id == user.id
   end

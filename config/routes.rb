@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   # memberships
-  resources :memberships, only: [:show] do
+  resources :memberships, only: [:show, :destroy] do
     put :accept, on: :member
     put :reject, on: :member
   end

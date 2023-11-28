@@ -10,10 +10,10 @@ class League < ApplicationRecord
   end
 
   def membership_status
-    m_status.nil? ? '' : Membership.statuses.keys[m_status]
+    m_status.nil? ? "" : Membership.statuses.keys[m_status]
   end
 
   def membership_role
-    m_role.nil? ? '' : Membership.roles.keys[m_role]
+    m_role.nil? ? "" : Membership.roles.keys[m_role]
   end
 end

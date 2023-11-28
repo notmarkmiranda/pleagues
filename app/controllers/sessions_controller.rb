@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   end
 
   def reset_password
-    user = GlobalID::Locator.locate_signed(params[:user_token], for: 'reset_password')
+    user = GlobalID::Locator.locate_signed(params[:user_token], for: "reset_password")
     if user&.update(user_params)
       flash[:notice] = "password updated"
       session[:redirect_back] = params[:redirect_back]
