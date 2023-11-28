@@ -5,7 +5,12 @@ class UsersController < ApplicationController
   before_action :require_user, only: [:show]
 
   def show
-    @leagues = current_user.leagues
+    @leagues = current_user.leagues.select(
+      "leagues.*, \
+      memberships.status AS m_status, \
+      memberships.role AS m_role, \
+      memberships.id AS m_id"
+    )
   end
 
   def new

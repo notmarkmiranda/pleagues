@@ -22,8 +22,18 @@
             <td><%= link_to league.name, league_path(league.uuid) %></td>
             <td><%= league.location %></td>
             <td><%= league.owner_name %></td>
-            <td><%= current_user.membership_status(league) %></td>
-            <td><%= current_user.role_in_league(league) %></td>
+            <td class="d-flex align-items-baseline gap-2">
+              <%= league.membership_status %>
+              <% if league.membership_status == "pending" %>
+                <%= button_to accept_membership_path(league.m_id), method: :put, class: "btn btn-outline-primary btn-sm" do %>
+                  <i class="bi bi-check"></i>
+                <% end %>
+                <%= button_to reject_membership_path(league.m_id), method: :put, class: "btn btn-outline-danger btn-sm" do %>
+                  <i class="bi bi-x"></i>
+                <% end %>
+              <% end %>
+            </td>
+            <td><%= league.membership_role %></td>
           </tr>
         <% end %>
       </tbody>
