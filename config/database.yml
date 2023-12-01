@@ -79,6 +79,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: poker_leagues_production
   username: poker_leagues
   password: <%= ENV["POKER_LEAGUES_DATABASE_PASSWORD"] %>
