@@ -20,7 +20,13 @@
               <td><%= membership.user_email %></td>
               <td><%= membership.role %></td>
               <td><%= membership.status %></td>
-              <td></td>
+              <td>
+                <% unless membership.superadmin? || membership.archived? %>
+                  <%= button_to membership_path(membership), method: :delete, class: "btn btn-outline-danger btn-sm" do %>
+                    <i class="bi bi-x"></i>
+                  <% end %>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
